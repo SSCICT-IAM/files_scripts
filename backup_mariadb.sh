@@ -49,4 +49,4 @@ rm tmp_sqlend.sql
 echo "-- Adding node to pool again --"
 rm /tmp/clustercheck.disabled
 
-echo "-- FINISH —"
+echo "-- FINISH --"
