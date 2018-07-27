@@ -32,14 +32,14 @@ if [ -z "$1" ]
       fi
       echo "-- Dumping $I ..."
       # Pipe compress and concat the head/end with the stoutput of mysqlump ( '-' cat argument)
-      mysqldump -u $MYSQL_USER --password=$MYSQL_PASS $I | cat tmp_sqlhead.sql - tmp_sqlend.sql | gzip -fc > "$FOLDER/$DAY-$I.sql.gz"
+      mysqldump -u $MYSQL_USER --password=$MYSQL_PASS --single-transaction --quick $I | cat tmp_sqlhead.sql - tmp_sqlend.sql | gzip -fc > "$FOLDER/$DAY-$I.sql.gz"
     done
 
 else
       I=$1;
       echo "-- Dumping $I ..."
       # Pipe compress and concat the head/end with the stoutput of mysqlump ( '-' cat argument)
-      mysqldump -u $MYSQL_USER --password=$MYSQL_PASS $I | cat tmp_sqlhead.sql - tmp_sqlend.sql | gzip -fc > "$FOLDER/$DAY-$I.sql.gz"
+      mysqldump -u $MYSQL_USER --password=$MYSQL_PASS --single-transaction --quick $I | cat tmp_sqlhead.sql - tmp_sqlend.sql | gzip -fc > "$FOLDER/$DAY-$I.sql.gz"
 fi
 
 # remove tmp files
